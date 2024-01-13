@@ -1,0 +1,10 @@
+@use "./../abstracts/" as *;
+
+.l-content-holder {
+  @include max-mq(tablet) {
+    width: 90%;
+    max-width: $smContainersWidth;
+    margin-inline: auto;
+    text-align: center;
+  }
+}

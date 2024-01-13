@@ -1,0 +1,38 @@
+@use "abstracts" as *;
+
+.main-header {
+  --logoWidth: 2.75rem;
+  --topOffset: var(--spacer-500);
+
+  @include minmax-mq(mobile, desktop) {
+    --topOffset: 0;
+  }
+  @include min-mq(tablet) {
+    --logoWidth: 3.25rem;
+    --topOffset: var(--spacer-1000);
+  }
+
+  position: absolute;
+  width: 100%;
+  top: var(--topOffset);
+  z-index: map-get($zIndex, siteHeader);
+
+  &__inner {
+    grid-column: content;
+    @include flexBetween();
+
+    @supports (grid-template-columns: subgrid) {
+      @include min-mq(mobile) {
+        display: grid;
+        grid-column: breakout-start / grid-end;
+        grid-template-columns: subgrid;
+        align-items: center;
+      }
+    }
+  }
+
+  &__logo {
+    width: var(--logoWidth);
+    aspect-ratio: 1;
+  }
+}

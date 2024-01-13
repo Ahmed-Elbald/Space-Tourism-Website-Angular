@@ -1,0 +1,15 @@
+<header class="main-header">
+  <div class="l-grid-layout">
+    <div class="main-header__inner">
+
+      <!-- Logo -->
+      <a routerLink="/home" class="main-header__logo">
+        <img src="./assets/images/shared/logo.svg" alt="SpaceY Home Page">
+      </a>
+
+      <!-- Navigation -->
+      <app-navigation (pageChange)="pageChange.emit($event)"></app-navigation>
+
+    </div>
+  </div>
+</header>

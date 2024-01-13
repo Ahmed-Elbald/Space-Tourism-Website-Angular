@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+// Imprted files
+
+// Abstracts
+@use "./styles/abstracts" as *;
+
+// Base
+@use "./styles/base";
+
+/* Vendors */
+@use "./styles/vendor";
+
+/* Layout */
+@use "./styles/layout";
+
+/* Components */
+@use "./styles/components";
+
+/* Global Styles */
+body {
+  background-image: var(--bodyBgImgMobile);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 100vh;
+
+  @include min-mq(tablet) {
+    background-image: var(--bodyBgImgDesktop);
+  }
+}
+
+.main {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block-start: var(--spacer-1000);
+
+  @include min-mq(mobile) {
+    padding-block-start: calc(
+      var(--mainHeaderHeight, 80px) + var(--paddingTop, var(--spacer-200))
+    );
+  }
+
+  @include min-mq(tablet) {
+    --paddingTop: var(--spacer-1000);
+  }
+
+  &[data-end-padded] {
+    padding-block-end: var(--spacer-1000);
+    @include min-mq(tablet) {
+      padding-block-end: var(--spacer-1200);
+    }
+  }
+
+  &__inner {
+    height: max-content;
+  }
+}
