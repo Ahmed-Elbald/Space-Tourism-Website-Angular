@@ -84,5 +84,5 @@ $smContainersWidth: calc(
   map-get(
       $map: $breakpoints,
       $key: mobile,
-    ) + 50px
+    ) - 50px
 );

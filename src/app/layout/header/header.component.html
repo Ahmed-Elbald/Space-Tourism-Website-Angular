@@ -8,7 +8,7 @@
       </a>
 
       <!-- Navigation -->
-      <app-navigation (pageChange)="pageChange.emit($event)"></app-navigation>
+      <app-navigation [routesPaths]="routesPaths" (pageChange)="pageChange.emit($event)"></app-navigation>
 
     </div>
   </div>

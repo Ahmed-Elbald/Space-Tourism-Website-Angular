@@ -9,8 +9,8 @@
 
   @include min-mq(tablet) {
     --containerInlinePadding: 1fr;
-    --containerBreakoutWidth: 5rem;
-    --contentWidth: min(calc(#{map-get($breakpoints, tablet)} + 200px), 80%);
+    --contentBreakoutWidth: 5rem;
+    --contentWidth: min(calc(#{map-get($breakpoints, tablet)} + 200px), 82.5%);
   }
 }
 
@@ -18,8 +18,8 @@
   display: grid;
   grid-template-columns:
     [grid-start] var(--containerInlinePadding)
-    [breakout-start] var(--containerBreakoutWidth, 0)
+    [breakout-start] var(--contentBreakoutWidth, 0)
     [content-start] var(--contentWidth, 1fr) [content-end]
-    var(--containerBreakoutWidth, 0) [breakout-end]
+    var(--contentBreakoutWidth, 0) [breakout-end]
     var(--containerInlinePadding) [grid-end];
 }

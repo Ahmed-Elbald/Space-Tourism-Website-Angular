@@ -1,6 +1,6 @@
 @use "./../abstracts/" as *;
 
-.l-content-holder {
+.l-content-wrapper {
   @include max-mq(tablet) {
     width: 90%;
     max-width: $smContainersWidth;

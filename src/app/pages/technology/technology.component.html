@@ -1,0 +1,41 @@
+<div class="tabs" tabsContainer>
+  <div class="l-grid-switch">
+
+    <div class="tabs__content l-content-wrapper">
+
+      <!-- Tablist -->
+      <div class="tabs__tablist" tabList [labels]="technologiesNames" [orientation]="tabsOrientation"
+        labelledby="page-heading">
+        @for (label of technologiesNames; track $index) {
+        <button type="button" class="tabs__tab" [tabItem]="label" [ariaLabel]="label">
+          {{$index + 1}}
+        </button>
+        }
+      </div>
+
+      <!-- Panels -->
+      <dl class="tabs__panels">
+        @for (technology of technologies; track $index) {
+        <div class="tabs__panel" [tabPanel]="technology.name" (activate)="activeTab = $event">
+
+          <!-- Technology Name -->
+          <dt class="u-text-uppercase u-text-neu-100 u-fs-900 u-ff-sec">{{technology.name}}</dt>
+
+          <!-- Technology Description -->
+          <dd>{{technology.description}}</dd>
+        </div>
+        }
+      </dl>
+    </div>
+
+    <!-- Images -->
+    <div class="tabs__imgs">
+      @for (technology of technologies; track $index) {
+      <img src="{{technology.images.portrait}}" data-view="portrait" alt=""
+        [class.js-hidden]="activeTab !== technology.name">
+      <img src="{{technology.images.landscape}}" data-view="landscape" alt=""
+        [class.js-hidden]="activeTab !== technology.name">
+      }
+    </div>
+  </div>
+</div>

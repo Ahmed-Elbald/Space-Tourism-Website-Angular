@@ -11,6 +11,9 @@ import { NavigationComponent } from '../navigation/navigation.component';
 })
 export class HeaderComponent {
 
+  // Input variables
+  @Input({ required: true }) routesPaths!: string[];
+
   // Outputs
   @Output() pageChange = new EventEmitter<string>();
 

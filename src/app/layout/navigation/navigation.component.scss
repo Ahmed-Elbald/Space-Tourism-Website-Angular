@@ -24,8 +24,99 @@
   }
 }
 
+// Basic
 .main-nav {
-  @supports (grid-template-columns: subgrid) {
+  &__open,
+  &__close {
+    padding: var(--spacer-300);
+    @include min-mq(mobile) {
+      display: none;
+    }
+  }
+
+  &__open[aria-expanded="true"] {
+    visibility: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--topOffset);
+    inset-inline-end: var(--containerInlinePadding);
+  }
+
+  &__inner {
+    padding-inline-start: var(--inlinePadding);
+    padding-inline-end: var(--inlinePadding);
+    background-color: var(--bgClr);
+    z-index: 1;
+
+    @include max-mq(mobile) {
+      position: fixed;
+      top: 0;
+      inset-inline-end: 0;
+      transform: translateX(100%);
+      visibility: hidden;
+      height: 100vh;
+      height: 100svh;
+      padding-top: var(--spacer-1200);
+    }
+  }
+
+  &.js-show-up &__inner {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  &__list {
+    display: flex;
+    row-gap: var(--spacer-400);
+    column-gap: var(--spacer-600);
+
+    @include max-mq(mobile) {
+      flex-direction: column;
+    }
+
+    li {
+      --border: 2px solid transparent;
+      padding-inline-end: var(--spacer-1100);
+      border-inline-end: var(--border);
+      color: var(--txtClr);
+      font-size: var(--fs-400);
+      letter-spacing: 2.7px;
+      text-transform: uppercase;
+
+      @include min-mq(mobile) {
+        padding-block: var(--spacer-600);
+        padding-inline-end: 0;
+        border-inline-end: none;
+        border-bottom: var(--border);
+      }
+
+      &:hover {
+        border-color: var(--linkHoverClr);
+      }
+
+      &:has(a[aria-current="page"]) {
+        border-color: currentColor;
+      }
+
+      &:has(a:focus-visible) {
+        border-color: transparent;
+      }
+
+      span[aria-hidden="true"] {
+        padding-inline-end: 2px;
+        @include minmax-mq(mobile, tablet) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// When 'subgrid' is supported
+@supports (grid-template-columns: subgrid) {
+  .main-nav {
     @include min-mq(mobile) {
       position: relative;
       grid-column: content-start / grid-end;
@@ -57,123 +148,42 @@
         background-color: var(--horizontalLineBg);
       }
     }
-  }
 
-  @supports (backdrop-filter: blur(1rem)) {
+    &__inner {
+      @include min-mq(mobile) {
+        position: relative;
+        justify-self: end;
+      }
+
+      &::before {
+        @include pseudoElement("");
+        width: calc(var(--inlinePadding) / 2);
+        height: var(--horizontalLineHeight);
+        top: 50%;
+        inset-inline-start: 0;
+        transform: translateY(-50%);
+        background-color: var(--horizontalLineBg);
+      }
+    }
+
+    &[data-page="home"] &__inner {
+      @include minmax-mq(mobile, tablet) {
+        padding-inline: var(--inlinePadding);
+      }
+    }
+  }
+}
+
+@supports (backdrop-filter: blur(1rem)) {
+  .main-nav {
     --bgClr: hsl(var(--clr-neu-100) / 0.125);
     &::before {
       backdrop-filter: var(--blurValue);
     }
-  }
 
-  &__open,
-  &__close {
-    padding: var(--spacer-300);
-    @include min-mq(mobile) {
-      display: none;
-    }
-  }
-
-  &__open[aria-expanded="true"] {
-    visibility: hidden;
-  }
-
-  &__inner {
-    position: relative;
-    justify-self: end;
-    padding-inline-start: var(--inlinePadding);
-    padding-inline-end: var(--inlinePadding);
-    background-color: var(--bgClr);
-    z-index: 1;
-
-    @supports (backdrop-filter: blur(1rem)) {
+    &__inner {
       backdrop-filter: var(--blurValue);
-    }
-
-    @supports (grid-template-columns: subgrid) {
       padding-inline-end: 0;
-    }
-
-    @include max-mq(mobile) {
-      position: fixed;
-      top: 0;
-      inset-inline-end: 0;
-      transform: translateX(100%);
-      visibility: hidden;
-      height: 100vh;
-      height: 100svh;
-      padding-top: var(--spacer-1200);
-    }
-
-    &::after {
-      @include pseudoElement("");
-      width: calc(var(--inlinePadding) / 2);
-      height: var(--horizontalLineHeight);
-      top: 50%;
-      inset-inline-start: 0;
-      transform: translateY(-50%);
-      background-color: var(--horizontalLineBg);
-    }
-  }
-
-  &[data-page="home"] &__inner {
-    @include minmax-mq(mobile, tablet) {
-      padding-inline: var(--inlinePadding);
-    }
-  }
-
-  &.js-show-up &__inner {
-    transform: translateX(0);
-    visibility: visible;
-  }
-
-  &__close {
-    position: absolute;
-    top: var(--topOffset);
-    inset-inline-end: var(--containerInlinePadding);
-  }
-
-  &__list {
-    display: flex;
-    row-gap: var(--spacer-400);
-    column-gap: var(--spacer-600);
-
-    @include max-mq(mobile) {
-      flex-direction: column;
-    }
-  }
-
-  &__link {
-    --border: 2px solid transparent;
-    position: relative;
-    width: 100%;
-    padding-inline-end: var(--spacer-1100);
-    border-inline-end: var(--border);
-    color: var(--txtClr);
-    font-size: var(--fs-400);
-    letter-spacing: 2.7px;
-    text-transform: uppercase;
-
-    @include min-mq(mobile) {
-      padding-block: var(--spacer-700);
-      padding-inline-end: 0;
-      border-inline-end: none;
-      border-bottom: var(--border);
-    }
-
-    &[aria-current="page"] {
-      border-color: currentColor;
-    }
-
-    &:hover {
-      border-color: var(--linkHoverClr);
-    }
-
-    span[aria-hidden="true"] {
-      padding-inline-end: 2px;
-      @include minmax-mq(mobile, tablet) {
-        display: none;
-      }
     }
   }
 }

@@ -1,16 +1,16 @@
 <nav class="main-nav" [class.js-show-up]="isExpanded" [attr.data-page]="currentPage" id="main-nav">
 
   <!-- Navigation Open Button -->
-  <button class="main-nav__open js-main-nav-open" aria-controls="main-nav-list" [attr.aria-expanded]="isExpanded"
-    type="button" (click)="toggleNav()">
+  <button class="main-nav__open" aria-controls="main-nav-list" [attr.aria-expanded]="isExpanded" type="button"
+    (click)="toggleNav()" #navOpenBtn>
     <img src="./assets/images/shared/icon-hamburger.svg" alt="Open navigation">
   </button>
 
   <div class="main-nav__inner">
 
     <!-- Navigation Close Button -->
-    <button class="main-nav__close js-main-nav-close" aria-controls="main-nav-list" [attr.aria-expanded]="isExpanded"
-      type="button" (click)="toggleNav()">
+    <button class="main-nav__close" aria-controls="main-nav-list" [attr.aria-expanded]="isExpanded" type="button"
+      (click)="toggleNav()">
       <img src="./assets/images/shared/icon-close.svg" alt="Close the navigation">
     </button>
 
@@ -18,8 +18,8 @@
     <ul class="main-nav__list" id="main-nav-list">
       @for (route of routesPaths; track $index) {
       <li>
-        <a class="main-nav__link" [routerLink]="'/' + route" ariaCurrentWhenActive="page" routerLinkActive="js-current"
-          (isActiveChange)="handlePageChange($event, route)">
+        <a [routerLink]="'/' + route" ariaCurrentWhenActive="page" routerLinkActive="js-current"
+          (isActiveChange)="handlePageChange($event, route)" #navLink>
           <span aria-hidden="true">0{{$index}}</span>
           {{route}}
           <span class="u-sr-only"> page</span>

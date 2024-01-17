@@ -1,30 +1,59 @@
 import { Route } from '@angular/router';
-import { AppComponent } from './app.component';
+
+import { RouteData } from './utils/models/route-data.model';
+import { HomeComponent } from './pages/home/home.component';
+import { DestinationComponent } from './pages/destination/destination.component';
+import { CrewComponent } from './pages/crew/crew.component';
+import { TechnologyComponent } from './pages/technology/technology.component';
 
 const routesTitlePrefix = "SpaceY |";
-export const routes: (Route & { navLinkContent: string })[] = [
+export const routes: (Route & { data?: RouteData })[] = [
   {
     path: "home",
-    component: AppComponent,
+    component: HomeComponent,
     title: `${routesTitlePrefix} Home`,
-    navLinkContent: "home",
+    data: {
+      addToNavbar: true,
+      navLink: "home",
+      pageIndex: 0,
+    }
   },
   {
     path: "destination",
-    component: AppComponent,
+    component: DestinationComponent,
     title: `${routesTitlePrefix} Destination`,
-    navLinkContent: "destination",
+    data: {
+      addToNavbar: true,
+      navLink: "destination",
+      pageIndex: 1,
+      headingTxt: "pick your destination"
+    }
   },
   {
     path: "crew",
-    component: AppComponent,
+    component: CrewComponent,
     title: `${routesTitlePrefix} Crew`,
-    navLinkContent: "crew",
+    data: {
+      addToNavbar: true,
+      navLink: "crew",
+      pageIndex: 2,
+      headingTxt: "meet your crew"
+    }
   },
   {
     path: "technology",
-    component: AppComponent,
+    component: TechnologyComponent,
     title: `${routesTitlePrefix} Technology`,
-    navLinkContent: "technology",
+    data: {
+      addToNavbar: true,
+      navLink: "technology",
+      pageIndex: 3,
+      headingTxt: "pace launch 101"
+    }
   },
+  {
+    path: "**",
+    pathMatch: "full",
+    redirectTo: "home"
+  }
 ];

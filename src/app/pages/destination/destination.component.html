@@ -1,0 +1,51 @@
+<div class="tabs" tabsContainer>
+  <div class="l-content-wrapper">
+    <div class="l-grid-switch">
+
+      <div class="tabs__content">
+
+        <!-- Tablist -->
+        <div class="tabs__tablist" tabList [labels]="destinationsLabels" labelledby="page-heading">
+          @for (label of destinationsLabels; track $index) {
+          <button type="button" class="tabs__tab" [tabItem]="label">
+            {{label}}
+          </button>
+          }
+        </div>
+
+        <!-- Panels -->
+        <div class="tabs__panels">
+          @for (destination of destinations; track $index) {
+          <div class="tabs__panel" [tabPanel]="destination.name" (activate)="activeTab = $event">
+
+            <!-- Destination Name -->
+            <h2 class="u-keyword u-py-300 u-fs-1000">{{destination.name}}</h2>
+
+            <!-- Destination Description -->
+            <p>{{destination.description}}</p>
+
+            <!-- Destination Details -->
+            <dl class="tabs__panel__details">
+              <div>
+                <dt class="u-text-uppercase u-fs-400 u-pb-200">avg. distance</dt>
+                <dd class="u-keyword u-fs-700">{{destination.distance}}</dd>
+              </div>
+              <div>
+                <dt class="u-text-uppercase u-fs-400 u-pb-200">Est. travel time</dt>
+                <dd class="u-keyword u-fs-700">{{destination.travel}}</dd>
+              </div>
+            </dl>
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Images -->
+      <div class="tabs__imgs">
+        @for (destination of destinations; track $index) {
+        <img src="{{destination.images.webp}}" alt="" [class.js-hidden]="activeTab !== destination.name">
+        }
+      </div>
+    </div>
+  </div>
+</div>

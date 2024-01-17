@@ -5,5 +5,15 @@
 }
 
 .l-grid-switch {
-  @include gridSwitch();
+  display: grid;
+  justify-items: center;
+  row-gap: var(--rowGap, var(--spacer-1000));
+
+  @include min-mq($layoutSwitchBp) {
+    justify-items: unset;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    column-gap: var(--columnGap, var(--spacer-1000));
+  }
 }

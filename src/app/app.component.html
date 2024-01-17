@@ -1,5 +1,24 @@
 <!-- a11y -->
 <app-a11y></app-a11y>
 
-<!-- Header -->
-<app-header (pageChange)="handlePageChange($event)"></app-header>
+<ng-container *ngrxLet="activeRouteData$ as activeRouteData">
+  <!-- Header -->
+  <app-header [routesPaths]="routesPaths" (pageChange)="handlePageChange($event)"></app-header>
+
+  <!-- Content -->
+  <main class="main" [attr.data-end-padded]="currentPage !== 'crew'">
+    <div class="l-grid-layout">
+      <div class="main__inner" [attr.data-bleed-left]="currentPage === 'technology'">
+
+        <!-- Page Heading -->
+        @if (activeRouteData['navLink'] !== 'home') {
+        <app-page-heading [index]="activeRouteData!['pageIndex']">
+          {{activeRouteData!['headingTxt']}}
+        </app-page-heading>
+        }
+
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </main>
+</ng-container>
