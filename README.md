@@ -37,17 +37,17 @@ page. The layout varies remarkbly when navigating through pages or changing scre
 
 ## Hard decisions I had to make
 
-1. What is the best way to align the content exactly like the original design?
+1. **What is the best way to align the content exactly like the original design?**
 
-The challenge has a lot of deceptively simple requirements when it comes to the layout of the page. For instance,
-the navigation's background bleeds to the end of the screen while its content should be aligned with the page's main content. But that's not always the case. For instance the navigation doesn't bleed at small screens in the
-`Home Page`. The content itself sometimes bleed like in the `Technology Page`. The logo isn't aligned with content and the header's top offset varies across screen sizes. To handle this chaos, I couldn't depend on fixed sizes and values. Instead, I used CSS Subgrid whereas implementing a simple layout for browsers that don't support this new feature.
+   The challenge has a lot of deceptively simple requirements when it comes to the layout of the page. For instance,
+   the navigation's background bleeds to the end of the screen while its content should be aligned with the page's main content. But that's not always the case. For instance the navigation doesn't bleed at small screens in the
+   `Home Page`. The content itself sometimes bleed like in the `Technology Page`. The logo isn't aligned with content and the header's top offset varies across screen sizes. To handle this chaos, I couldn't depend on fixed sizes and values. Instead, I used CSS Subgrid whereas implementing a simple layout for browsers that don't support this new feature.
 
-2. How to build the interactive tabs?
+2. **How to build the interactive tabs?**
 
-I was going to use Angular Material to do the whole thing for me. But each tab pattern in the project has different structure and styling. In addition, there hasn't been an implementation for the tabs pattern in
-Angular Material CDK yet. Long story short, I had to build it on my own, which took me a while. That wasn't a big
-problem though as I've build it before.
+   I was going to use Angular Material to do the whole thing for me. But each tab pattern in the project has different structure and styling. In addition, there hasn't been an implementation for the tabs pattern in
+   Angular Material CDK yet. Long story short, I had to build it on my own, which took me a while. That wasn't a big
+   problem though as I've build it before.
 
 ## What I Learned
 
