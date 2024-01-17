@@ -5,7 +5,7 @@
 <h3 align="center">
    <a href="https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3/hub">Challenge</a>
    <span>|</span>
-   <a href="https://www.frontendmentor.io/solutions/mulitstep-form-with-angu">My Solution</a>
+   <a href="https://www.frontendmentor.io/solutions/space-tourism-website-with-angular-and-subgrid-wj4RuDHvzk">My Solution</a>
 </h3>
 <br>
 <br>
