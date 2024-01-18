@@ -1,6 +1,6 @@
 @use "../abstracts" as *;
 
-/* Utility Calsses */
+/* Utility Classes */
 // Padding
 @each $key, $value in $sizes {
   .u-ps-#{$key} {
@@ -44,10 +44,6 @@
   }
 }
 // Text
-.u-text-center {
-  @include textCenter();
-}
-
 .u-keyword {
   display: block;
   margin-block: var(--spacer-100);
@@ -61,13 +57,6 @@
 @each $textStyle in $textStyles {
   .u-text-#{$textStyle} {
     text-transform: #{$textStyle};
-  }
-}
-
-// Border Radius
-@each $radius, $value in $border-radius {
-  .u-radius-#{$radius} {
-    border-radius: $value;
   }
 }
 
@@ -85,13 +74,6 @@
         var(unquote($string: "--clr-" + #{$color} + "-" + #{$colorVariant}))
       );
     }
-  }
-}
-
-// Box Shadow
-@each $shadow, $value in $box-shadow {
-  .u-shadow-#{$shadow} {
-    box-shadow: unquote($string: $value);
   }
 }
 
@@ -119,12 +101,27 @@
   @include screenReaderOnly();
 }
 
-// Center Switch
-.u-center-switch {
-  @include centerSwitch();
+// Structure
+.u-flex-between {
+  @include flexBetween();
 }
 
-// Hidden
-.u-hidden {
-  display: none;
+.u-flex-centering {
+  @include flexCentering();
+}
+
+.u-grid-centering {
+  @include gridCentering();
+}
+
+.u-margin-spacer {
+  @include marginSpacer();
+}
+
+.u-flex-spacer {
+  @include flexSpacer();
+}
+
+.u-grid-spacer {
+  @include gridSpacer();
 }

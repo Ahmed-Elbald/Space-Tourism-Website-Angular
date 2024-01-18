@@ -6,8 +6,6 @@ $breakpoints: (
   desktop: 1200px,
 );
 
-$border-radius: ();
-
 $textStyles: ("capitalize", "uppercase");
 
 $colors: (
@@ -31,8 +29,6 @@ $colors: (
     ),
   ),
 );
-
-$box-shadow: ();
 
 $fontFamilies: (
   pr: '"Barlow Condensed", sans-serif',
@@ -80,9 +76,3 @@ $zIndex: (
 );
 
 $layoutSwitchBp: tablet;
-$smContainersWidth: calc(
-  map-get(
-      $map: $breakpoints,
-      $key: mobile,
-    ) - 50px
-);

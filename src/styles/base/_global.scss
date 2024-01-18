@@ -3,16 +3,6 @@
 /* Global */
 :root {
   --bodyTxtClr: hsl(var(--clr-neu-300));
-
-  --scrollbarWidth: 0.5rem;
-  --scrollbarThumbBg: hsl(var(--clr-neu-100));
-  --scrollbarTrackBg: hsl(var(--clr-pr-700));
-
-  --focusOutlineWidth: 2px;
-  --inputOutlineStyle: solid;
-  --ControlOutlineStyle: dashed;
-  --linkOutlineOffset: 3px;
-
   --linkHoverClr: hsl(var(--clr-neu-300) / 0.25);
 }
 
@@ -22,11 +12,11 @@
 
 ::-webkit-scrollbar-thumb {
   border-radius: 0;
-  background-color: var(--scrollbarThumbBg);
+  background-color: hsl(var(--clr-neu-100));
 }
 
 ::-webkit-scrollbar-track {
-  background-color: var(--scrollbarTrackBg);
+  background-color: hsl(var(--clr-pr-700));
 }
 
 ::selection {
@@ -66,20 +56,18 @@ input,
 button,
 textarea,
 a {
-  outline-width: var(--focusOutlineWidth);
+  outline-width: 2px;
   outline-color: transparent;
 
   &:focus-visible {
     outline-color: currentColor;
-    border: none !important;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   @supports not selector(:focus-visible) {
     &:focus {
       outline-color: currentColor;
-      border: none !important;
-      text-decoration: none !important;
+      text-decoration: none;
     }
   }
 }
@@ -93,12 +81,12 @@ textarea {
 
 input,
 textarea {
-  outline-style: var(--inputOutlineStyle);
+  outline-style: solid;
 }
 
 a,
 button {
-  outline-style: var(--ControlOutlineStyle);
+  outline-style: dashed;
 }
 
 textarea {
@@ -121,7 +109,7 @@ a {
   text-decoration: none;
   text-transform: inherit;
   color: inherit;
-  outline-offset: var(--linkOutlineOffset);
+  outline-offset: 3px;
 }
 
 ul,

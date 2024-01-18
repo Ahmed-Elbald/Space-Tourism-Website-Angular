@@ -14,7 +14,6 @@
   }
 
   &__tablist {
-    padding-block-end: var(--spacer-500);
     @include min-mq(mobile) {
       order: 2;
     }

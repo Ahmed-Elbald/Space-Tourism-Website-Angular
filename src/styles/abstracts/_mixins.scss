@@ -47,64 +47,29 @@
   height: $diameter;
 }
 
-@mixin lineBetween() {
-  &:not([data-last="true"]) {
-    border-bottom: 1px solid var(--lineClr);
-  }
-}
-
-@mixin flexCluster($justify: center) {
+@mixin flexCluster($gap, $justify: center) {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--clusterSpacer);
+  gap: $gap;
   justify-content: $justify;
 }
 
-@mixin centerSwitch($smOnly: false) {
-  margin-inline: auto;
-  max-width: $smContainersWidth;
-
-  &[data-center-text] {
-    text-align: center;
-  }
-
-  @include smOnly($layoutSwitchBp, $smOnly) {
-    max-width: unset;
-    margin-inline: 0;
-    text-align: unset;
-  }
-}
-
-@mixin flexSpacer($smOnly: false) {
+@mixin flexSpacer($spacer: 1em) {
   display: flex;
   flex-direction: column;
-  gap: var(--flexSpacer, var(--spacer-200));
-
-  @include smOnly($layoutSwitchBp, $smOnly) {
-    --flexSpacer: 0;
-  }
+  gap: $spacer;
 }
 
-@mixin gridSpacer($smOnly: false) {
+@mixin gridSpacer($spacer: 1rem) {
   display: grid;
-  row-gap: var(--gridSpacer, var(--spacer-200));
-
-  @include smOnly($layoutSwitchBp, $smOnly) {
-    --gridSpacer: 0;
-  }
+  row-gap: $spacer;
 }
 
-@mixin marginSpacer($smOnly: false) {
+@mixin marginSpacer($spacer: 1rem) {
   > * {
-    margin-block-start: var(--marginSpacer, var(--spacer-200));
+    margin-block-start: $spacer;
 
     &:first-child {
-      margin-block-start: 0;
-    }
-  }
-
-  @include smOnly($layoutSwitchBp, $smOnly) {
-    > * {
       margin-block-start: 0;
     }
   }
@@ -153,32 +118,9 @@
   }
 }
 
-@mixin triangleDirection($direction, $color) {
-}
-
 @mixin triangle($size, $color, $direction) {
   border: $size solid transparent;
   border-#{$direction}-color: $color;
-}
-
-@mixin overlay($bgClr: hsl(0 0% 100% / 0.125)) {
-  position: absolute;
-  inset: 0;
-  background-color: $bgClr;
-}
-
-@mixin smOnly($bp: $layoutSwitchBp, $smOnly) {
-  @if ($smOnly == true) {
-    @include min-mq($bp) {
-      @content;
-    }
-  }
-
-  &[data-sm-only] {
-    @include min-mq($bp) {
-      @content;
-    }
-  }
 }
 
 @mixin hide($visually: false) {
@@ -223,14 +165,6 @@
   }
 }
 
-@mixin textCenter($smOnly: false) {
-  text-align: center;
-
-  @include smOnly($layoutSwitchBp, $smOnly) {
-    text-align: unset;
-  }
-}
-
 @mixin screenReaderOnly() {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
@@ -243,26 +177,4 @@
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
-}
-
-// Custom Mixins
-@mixin setBodyBg($pageName) {
-  body {
-    --bodyBgImg: url("./../assets/images/#{$pageName}/background-#{$pageName}-mobile.jpg");
-
-    @include min-mq(mobile) {
-      --bodyBgImg: url("./../assets/images/#{$pageName}/background-#{$pageName}-tablet.jpg");
-    }
-    @include min-mq(tablet) {
-      --bodyBgImg: url("./../assets/images/#{$pageName}/background-#{$pageName}-desktop.jpg");
-    }
-  }
-}
-
-@mixin jsEnabled($class) {
-  .c-tabs[data-js-enabled="true"] {
-    .c-tabs__#{$class} {
-      @content;
-    }
-  }
 }

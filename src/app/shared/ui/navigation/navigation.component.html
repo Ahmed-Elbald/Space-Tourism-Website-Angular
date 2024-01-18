@@ -19,7 +19,7 @@
       @for (route of routesPaths; track $index) {
       <li>
         <a [routerLink]="'/' + route" ariaCurrentWhenActive="page" routerLinkActive="js-current"
-          (isActiveChange)="handlePageChange($event, route)" #navLink>
+          (isActiveChange)="handlePageChange($event, route)" (click)="toggleNav(false)" #navLink>
           <span aria-hidden="true">0{{$index}}</span>
           {{route}}
           <span class="u-sr-only"> page</span>

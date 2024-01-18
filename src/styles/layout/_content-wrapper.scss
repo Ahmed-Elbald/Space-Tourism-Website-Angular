@@ -3,7 +3,7 @@
 .l-content-wrapper {
   @include max-mq(tablet) {
     width: 90%;
-    max-width: $smContainersWidth;
+    max-width: map-get($breakpoints, mobile);
     margin-inline: auto;
     text-align: center;
   }

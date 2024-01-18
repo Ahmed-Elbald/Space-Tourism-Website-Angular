@@ -1,19 +1,15 @@
 @use "../abstracts" as *;
 
-.l-grid-centering {
-  @include gridCentering();
-}
-
 .l-grid-switch {
   display: grid;
   justify-items: center;
-  row-gap: var(--rowGap, var(--spacer-1000));
+  row-gap: var(--rowGap, var(--spacer-800));
 
   @include min-mq($layoutSwitchBp) {
     justify-items: unset;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
     align-items: center;
-    column-gap: var(--columnGap, var(--spacer-1000));
+    column-gap: var(--columnGap, var(--spacer-800));
   }
 }

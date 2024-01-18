@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Subject, fromEvent, takeUntil } from 'rxjs';
+
 import { keyPressed } from '../../utils/helpers/key-pressed.helper';
 
 @Component({
