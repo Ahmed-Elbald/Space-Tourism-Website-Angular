@@ -1,0 +1,43 @@
+<div class="tabs" tabsContainer>
+  <div class="l-content-wrapper">
+    <div class="l-grid-switch">
+
+      <div class="tabs__content">
+
+        <!-- Tablist -->
+        <div class="tabs__tablist" tabList [labels]="crewMembersNames" labelledby="page-heading">
+          @for (label of crewMembersNames; track $index) {
+          <button type="button" class="tabs__tab" [tabItem]="label">
+            <span class="u-sr-only">{{label}}</span>
+          </button>
+          }
+        </div>
+
+        <!-- Panels -->
+        <dl class="tabs__panels">
+          @for (member of crewMembers; track $index) {
+          <div class="tabs__panel" [tabPanel]="member.name" (activate)="activeTab = $event">
+
+            <!-- Meber Role -->
+            <dt class="u-text-uppercase u-text-neu-200 u-fs-700 u-ff-sec">{{member.role}}</dt>
+
+            <!-- Member Name & Bio -->
+            <dd>
+              <b class="u-keyword u-fs-900 u-pt-200 u-pb-400">{{member.name}}</b>
+              {{member.bio}}
+            </dd>
+
+          </div>
+          }
+        </dl>
+      </div>
+
+      <!-- Images -->
+      <div class="tabs__imgs">
+        @for (member of crewMembers; track $index) {
+        <img src="{{member.images.webp}}" alt="" [class.js-hidden]="activeTab !== member.name">
+        }
+      </div>
+    </div>
+  </div>
+</div>

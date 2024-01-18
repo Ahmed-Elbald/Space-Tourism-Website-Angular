@@ -12,9 +12,13 @@
 
         <!-- Page Heading -->
         @if (activeRouteData['navLink'] !== 'home') {
-        <app-page-heading [index]="activeRouteData!['pageIndex']">
+        <h1 class="page-heading" id="page-heading">
+          <span class="page-heading__number" aria-hidden="true">
+            0{{activeRouteData!['pageIndex']}}
+          </span>
+
           {{activeRouteData!['headingTxt']}}
-        </app-page-heading>
+        </h1>
         }
 
         <router-outlet></router-outlet>

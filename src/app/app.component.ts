@@ -1,20 +1,18 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Data, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Observable, filter, switchMap } from 'rxjs';
 import { LetDirective } from '@ngrx/component';
 
-import { HeaderComponent } from './layout/header/header.component';
-import { A11yComponent } from './a11y/a11y.component';
-import { PageHeadingComponent } from './pages/page-heading/page-heading.component';
+import { HeaderComponent } from './shared/ui/header/header.component';
+import { A11yComponent } from './shared/ui/a11y/a11y.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LetDirective, A11yComponent, HeaderComponent, PageHeadingComponent],
+  imports: [CommonModule, RouterOutlet, LetDirective, A11yComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
