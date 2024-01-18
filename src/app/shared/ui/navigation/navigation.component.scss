@@ -53,11 +53,10 @@
     @include max-mq(mobile) {
       position: fixed;
       top: 0;
+      bottom: 0;
       inset-inline-end: 0;
       transform: translateX(100%);
       visibility: hidden;
-      height: 100vh;
-      height: 100svh;
       padding-top: var(--spacer-1200);
     }
   }

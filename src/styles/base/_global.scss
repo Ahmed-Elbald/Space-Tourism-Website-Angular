@@ -56,17 +56,19 @@ input,
 button,
 textarea,
 a {
+  --outlineClr: currentColor;
+
   outline-width: 2px;
   outline-color: transparent;
 
   &:focus-visible {
-    outline-color: currentColor;
+    outline-color: var(--outlineClr);
     text-decoration: none;
   }
 
   @supports not selector(:focus-visible) {
     &:focus {
-      outline-color: currentColor;
+      outline-color: var(--outlineClr);
       text-decoration: none;
     }
   }
